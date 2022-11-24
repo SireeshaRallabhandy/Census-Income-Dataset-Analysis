@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Census Income Dataset</title>
+    <style>
+      body {
+      background-image: url("{{ url_for('static', filename='5611844.jpg') }}");;
+      background-size: 1366px 616px;
+      }
+      div {
+    margin-bottom: 12px;
+    align-items: center;
+    width: 500px;
+  }
+
+
+form{
+    background-color: #cccccc;
+    margin: 0 auto;
+    padding: 20px 20px 20px 20px;
+    width:40%;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 25px;
+
+}
+
+label {
+    display: inline-block;
+    width: 300px;
+    font: Arial ;
+    
+  }
+
+  h1 {
+    background-color: #31333F ;
+    color: white;
+    padding: 20px 20px 20px 20px;
+    border-radius: 5px;
+    margin: auto;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 40px;
+    text-align: center;
+}
+
+input#button.center{
+   margin: auto;
+}
+
+.center {
+  height: 40px;
+  width: 100px;
+  position: relative;
+  border: 1px #aaaaaa;
+}
+    </style>
+</head>
+<body>
+    <h1 class="text-center">Income Predictor</h1>
+      <u class="column">
+    <div>       </div>
+    <form method="POST" id = "inputs" action = "/pred/" >
+        <div><label for="age">Age</label><input type="number" oninvalid="alert('You must fill out the form!');" id="age" name="age" placeholder="Age"></div>
+
+        <div><label for="work_class">Work Class</label>{{ form.work_class }}</div>
+        
+        <div><label for="fnlwgt">fnlwgt</label><input type="number" id="fnlwgt" name="fnlwgt" placeholder="fnlwgt"></div>
+            
+        <div><label for="education">Education</label>{{ form.education }}</div>
+        
+        <div><label for="education_num">Education-num</label><input type="number" id="education_num" name="education_num" placeholder="Education-num"></div>    
+        
+        <div><label for="marital_status">Marital Status</label>{{ form.marital_status }}</div>
+        
+        <div><label for="occupation">Occupation</label>{{ form.occupation }}</div>
+        
+        <div><label for="relationship">Relationship</label>{{ form.relationship }}</div>
+
+        <div><label for="race">Race</label>{{ form.race }}</div>
+
+        <div><label for="sex">Sex</label>{{ form.sex }}</div>
+
+        <div><label for="capital_gain">Capital-gain</label><input type="text" id="capital_gain" name="capital_gain" placeholder="Capital-gain"></div>
+        
+        <div><label for="capital_loss">Capital-loss</label><input type="number" id="capital_loss" name="capital_loss" placeholder="Capital-loss"></div>
+        
+        <div><label for="hours_per_week">Hours per Week</label><input type="number" id="hours_per_week" name="hours_per_week" placeholder="Hours-Per-Week"></div>
+        
+        <div><label for="native_country">Native Country</label>{{ form.native_country }}</div>
+
+        <div><input class ="center" id = "button" type="submit" value = "Submit" onclick="validation();"/></div>
+        </form>
+        <script language="JavaScript" type="text/javascript" src="/js/jquery-1.2.6.min.js"></script>
+        <script language="JavaScript" type="text/javascript" src="/js/jquery-ui-personalized-1.5.2.packed.js"></script>
+        <script language="JavaScript" type="text/javascript" src="/js/sprinkle.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script type="text/javascript">
+          const handleSubmit = event => {
+              // 👇️ prevent page refresh
+              event.preventDefault();
+            };
+          function log() {
+              console.log('Clicked');
+            };
+          function validation() {
+              var age = document.getElementById("age").value;
+              var work_class = document.getElementById("work_class").value;
+              var fnlwgt = document.getElementById("fnlwgt").value;
+              var education = document.getElementById("education").value;
+              var education_num = document.getElementById("education_num").value;
+              var marital_status = document.getElementById("marital_status").value;
+              var occupation = document.getElementById("occupation").value;
+              var relationship = document.getElementById("relationship").value;
+              var race = document.getElementById("race").value;
+              var sex = document.getElementById("sex").value;
+              var capital_gain = document.getElementById("capital_gain").value;
+              var capital_loss = document.getElementById("capital_loss").value;
+              var hours_per_week = document.getElementById("hours_per_week").value;
+              var native_country = document.getElementById("native_country").value;
+
+              console.log('Clicked');
+              if (age == ''){
+                alert("Enter Age");
+                event.preventDefault();
+                }
+              if (work_class == ''){
+                alert("Enter Work Class");
+                event.preventDefault();
+                }
+              if (fnlwgt == '') { 
+                alert("Enter fnlwgt");
+                event.preventDefault();
+                }
+              if (education == ''){
+                alert("Enter Education");
+                event.preventDefault();
+                }
+              if (education_num == ''){
+                alert("Enter Education Number");
+                event.preventDefault();
+                }
+              if (marital_status == ''){
+                alert("Enter Marital Status");
+                event.preventDefault();
+                }
+              if (occupation == ''){
+                alert("Enter Occupation");
+                event.preventDefault();
+                }
+              if (relationship == ''){
+                alert("Enter Relationship");
+                event.preventDefault();
+                }
+              if (race == ''){
+                alert("Enter Race");
+                event.preventDefault();
+                }
+              if (sex == ''){
+                alert("Enter Sex");
+                event.preventDefault();
+                }
+              if (capital_gain == ''){
+                alert("Enter Capital Gain");
+                event.preventDefault();
+                }
+              if (capital_loss == ''){
+                alert("Enter Capital Loss");
+                event.preventDefault();
+                }
+              if (hours_per_week == ''){
+                alert("Enter Hours per Week");
+                event.preventDefault();
+                }
+              if (native_country == ''){
+                alert("Enter Native Country");
+                event.preventDefault();
+                }
+              if(age != ''&& native_country != '' && hours_per_week != ''&& capital_loss != ''&& capital_gain != ''&&sex!='' && race != '' && relationship!=''&& occupation !='' && marital_status !='' &&education_num!='' && education!='' && fnlwgt !='' && work_class!='')
+                $("#button").trigger('submit', [true]);
+                console.log('else');
+                // location.replace("http://127.0.0.1:5000/pred");
+              }
+              
+          
+          // var xhttp = new XMLHttpRequest();
+          // $(document).ready(function () {
+          //   $('form').submit(function (e){
+          //     console.log('hello');
+          //     e.preventDefault();
+          //   }) 
+          //       $.ajax({
+          //         url: '/',
+          //         type: "GET",
+          //         data:{
+          //         pred: $("#inputs").val()
+          //       },
+          //         success : function(result)
+          //         {
+          //          document.getElementById("demo").innerHTML = result.text;
+                    
+          //           console.log("success");
+          //           console.log(result.text)
+          //         },
+                  
+          //       })
+          //     })
+              
+           
+        </script>
+
+        <!-- <script>
+        var xhttp = new XMLHttpRequest();
+
+          $(document).ready(function () {
+
+              $('form').submit(function () {
+                $.ajax
+                  ({
+                    type: 'post',
+                    url: '/',
+                    data: $(this).serialize(),
+                    success: function (response) {
+                      document.getElementById("demo").innerHTML = xhttp.responseText;
+                      console.log(response)
+                    }
+                  });
+                return false;
+              });
+            });
+        </script> -->
+
+        </u>
+        
+        <div>
+
+        </div>
+</html>
